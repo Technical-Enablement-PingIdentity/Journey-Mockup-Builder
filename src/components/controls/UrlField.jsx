@@ -3,10 +3,13 @@ import TextField from './TextField';
 import CheckIcon from '../icons/CheckIcon';
 import CancelIcon from '../icons/CancelIcon';
 
+import useUrl from '../hooks/useUrl';
+
 function UrlField({ label, value, onChange }) {
   const [currentValue, setCurrentValue] = useState(value);
   const [isEditing, setIsEditing] = useState(false);
   const [isValid, setIsValid] = useState(true);
+  const { isValidUrl } = useUrl();
 
   const handleChange = (newValue) => {
     setCurrentValue(newValue);
@@ -19,16 +22,7 @@ function UrlField({ label, value, onChange }) {
   };
 
   const confirmChange = () => {
-    const urlPattern = new RegExp(
-      '^(https?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$',
-      'i' // fragment locator
-    );
-    if (!urlPattern.test(currentValue)) {
+    if (!isValidUrl(currentValue)) {
       setIsValid(false);
     } else {
       onChange(currentValue);

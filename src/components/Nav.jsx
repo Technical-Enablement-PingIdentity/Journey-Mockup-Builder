@@ -1,15 +1,19 @@
+import useUrl from './hooks/useUrl';
+
 function Nav({ journeyOptions }) {
+  const { proxyImageUrl } = useUrl();
   return (
     <nav
       className="navbar navbar-expand-sm mb-5"
       style={{ backgroundColor: journeyOptions.navbarBackgroundColor }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand py-0" href="#">
           <img
-            src={journeyOptions.pageLogo}
+            src={proxyImageUrl(journeyOptions.pageLogo)}
             alt="Logo"
-            width="150"
+            width="auto"
+            height="40"
             className="d-inline-block align-text-top"
           />
         </a>

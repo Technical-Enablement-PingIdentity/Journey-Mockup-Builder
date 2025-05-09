@@ -3,30 +3,7 @@ import SocialButton from './controls/SocialButton';
 import Nav from './Nav';
 import Eyecon from './icons/Eyecon';
 
-import { toPng } from 'html-to-image';
-
 function JourneyPreview({ journeyOptions }) {
-  const downloadImg = async () => {
-    const node = document.querySelector('#wrapper');
-    const dataUrl = await toPng(node, {
-      cacheBust: true,
-      filter: (node) => {
-        if (node.nodeName === 'IMG') {
-          node.src = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-            node.src
-          )}`;
-        }
-
-        return true;
-      },
-    });
-    const a = document.createElement('a');
-    a.href = dataUrl;
-    a.download = 'journey-preview.png';
-    a.click();
-    URL.revokeObjectURL(a.href);
-  };
-
   const mainStyle = {};
 
   if (journeyOptions.pageBackgroundType === 'image') {
@@ -133,11 +110,6 @@ function JourneyPreview({ journeyOptions }) {
             )}
           </div>
         </main>
-      </div>
-      <div className="d-flex justify-content-end mt-3">
-        <button className="btn btn-primary btn-sm" onClick={downloadImg}>
-          Download PNG
-        </button>
       </div>
     </div>
   );

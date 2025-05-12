@@ -16,7 +16,7 @@ function JourneyPreview({ journeyOptions }) {
     <div id="wrapper">
       <div className="journey-preview border" style={mainStyle}>
         <Nav journeyOptions={journeyOptions} />
-        <main className="site-content d-flex justify-content-center align-items-start">
+        <main className="site-content d-flex justify-content-center align-items-center">
           <div
             className="form-container p-4 w-100 mb-5"
             style={{ backgroundColor: journeyOptions.formBackgroundColor }}

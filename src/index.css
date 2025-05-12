@@ -48,6 +48,14 @@ input::placeholder {
   margin: 0;
 }
 
+.journey-preview {
+  min-height: 750px;
+}
+
+.journey-preview .site-content {
+  min-height: 750px;
+}
+
 .journey-preview .site-content .form-container {
   max-width: 450px;
   border-radius: 0.25rem;

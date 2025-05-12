@@ -78,6 +78,16 @@ function OptionsDrawer({ journeyOptions, setJourneyOptions }) {
         value={journeyOptions.formSubHeaderText}
         onChange={(newValue) => updateOptions('formSubHeaderText', newValue)}
       />
+      <ColorField
+        label="Form Text Color"
+        value={journeyOptions.formTextColor}
+        onChange={(newValue) => updateOptions('formTextColor', newValue)}
+      />
+      <ColorField
+        label="Form Background Color"
+        value={journeyOptions.formBackgroundColor}
+        onChange={(newValue) => updateOptions('formBackgroundColor', newValue)}
+      />
       <SwitchField
         label="Show Sign In with Apple"
         value={journeyOptions.showSignInWithApple}

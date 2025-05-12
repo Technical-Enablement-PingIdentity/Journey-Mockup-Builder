@@ -4,13 +4,16 @@ import Nav from './Nav';
 import Eyecon from './icons/Eyecon';
 
 function JourneyPreview({ journeyOptions }) {
-  const mainStyle = {};
-
-  if (journeyOptions.pageBackgroundType === 'image') {
-    mainStyle.backgroundImage = `url(${journeyOptions.pageBackgroundImage})`;
-  } else {
-    mainStyle.backgroundColor = journeyOptions.pageBackgroundColor;
-  }
+  const mainStyle = {
+    backgroundColor:
+      journeyOptions.pageBackgroundType === 'image'
+        ? null
+        : journeyOptions.pageBackgroundColor,
+    backgroundImage:
+      journeyOptions.pageBackgroundType === 'image'
+        ? `url('${journeyOptions.pageBackgroundImage}')`
+        : null,
+  };
 
   return (
     <div id="wrapper">
@@ -22,7 +25,12 @@ function JourneyPreview({ journeyOptions }) {
             style={{ backgroundColor: journeyOptions.formBackgroundColor }}
           >
             <div className="d-flex justify-content-center mb-2">
-              <img className="form-logo" src={journeyOptions.formLogo} />
+              <img
+                className="form-logo"
+                src={journeyOptions.formLogo}
+                width={journeyOptions.formLogoWidth}
+                height="auto"
+              />
             </div>
             <h2
               className="text-center fw-light"

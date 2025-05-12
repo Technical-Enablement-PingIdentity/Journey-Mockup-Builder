@@ -23,8 +23,8 @@ function UrlField({ label, value, onChange }) {
       '^(https?:\\/\\/)?' + // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
         '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+()\\w]*)*' + // port and path (allow encoded characters and parentheses)
+        '(\\?[;&a-z\\d%_.~()+=-]*)?' + // query string (allow encoded characters and parentheses)
         '(\\#[-a-z\\d_]*)?$',
       'i' // fragment locator
     );
@@ -33,11 +33,15 @@ function UrlField({ label, value, onChange }) {
     } else {
       onChange(currentValue);
       setIsEditing(false);
+      setIsValid(true);
+      document.activeElement.blur();
     }
   };
 
   const cancelChange = () => {
+    document.activeElement.blur();
     setCurrentValue(value);
+    setIsValid(true);
     setIsEditing(false);
   };
 

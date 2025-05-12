@@ -3,6 +3,7 @@ import PageBackgroundTypeSelector from './PageBackgroundTypeSelector';
 import SwitchField from './controls/SwitchField';
 import TextField from './controls/TextField';
 import UrlField from './controls/UrlField';
+import RangeField from './controls/RangeField';
 
 function OptionsDrawer({ journeyOptions, setJourneyOptions }) {
   const updateOptions = (key, value) => {
@@ -13,11 +14,22 @@ function OptionsDrawer({ journeyOptions, setJourneyOptions }) {
   };
 
   return (
-    <div className="p-3">
+    <div className="p-3 d-flex flex-column">
+      <button
+        className="btn btn-danger mb-3 align-self-end"
+        onClick={() => window.location.reload()}
+      >
+        Reset to Default
+      </button>
       <UrlField
         label="Page Logo"
         value={journeyOptions.pageLogo}
         onChange={(newValue) => updateOptions('pageLogo', newValue)}
+      />
+      <RangeField
+        label="Page Logo Width"
+        value={journeyOptions.pageLogoWidth}
+        onChange={(newValue) => updateOptions('pageLogoWidth', newValue)}
       />
       <ColorField
         label="Navbar Background Color"
@@ -67,6 +79,11 @@ function OptionsDrawer({ journeyOptions, setJourneyOptions }) {
         label="Form Logo"
         value={journeyOptions.pageLogo}
         onChange={(newValue) => updateOptions('formLogo', newValue)}
+      />
+      <RangeField
+        label="Form Logo Width"
+        value={journeyOptions.formLogoWidth}
+        onChange={(newValue) => updateOptions('formLogoWidth', newValue)}
       />
       <TextField
         label="Form Header"

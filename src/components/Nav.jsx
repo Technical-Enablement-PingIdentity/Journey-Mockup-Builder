@@ -9,7 +9,8 @@ function Nav({ journeyOptions }) {
           <img
             src={journeyOptions.pageLogo}
             alt="Logo"
-            width="150"
+            width={journeyOptions.pageLogoWidth}
+            height="auto"
             className="d-inline-block align-text-top"
           />
         </a>

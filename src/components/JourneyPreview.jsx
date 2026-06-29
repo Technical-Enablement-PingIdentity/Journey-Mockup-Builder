@@ -63,7 +63,7 @@ function JourneyPreview({ journeyOptions }) {
             {journeyOptions.showSignInWithFacebook && (
               <SocialButton
                 icon="https://img.icons8.com/fluency/452/facebook-new.png"
-                name="Google"
+                name="Facebook"
                 color="rgb(24, 119, 242)"
                 borderColor="rgb(24, 119, 242)"
               />
